@@ -1,8 +1,10 @@
-# astro-component-tester
+# astro-component-check
 
-Utility to help you write tests for your Astro components. In essence, what it does is create a temporary empty Astro project with only the selected component in a `src/pages/index.astro` file, then it builds it using the Astro CLI and finally, it returns the output of that build
+Utility to help you write tests for your Astro components.
+In essence, what it does is create a temporary empty Astro project with only the selected component in a `src/pages/index.astro` file,
+then it builds it using the Astro CLI and finally, it returns the output of that build
 
-While it's intended to be used when writing tests, you could also use it outside of that usecase, for instance to build a single component 😄
+While it's intended to be used when writing tests, you could also use it outside of that use case, for instance to build a single component 😄
 
 > Part of [astro-component-template](https://github.com/Princesseuh/astro-component-template)
 
@@ -12,7 +14,7 @@ Examples below uses Mocha and Chai for convenience but this should work with any
 
 ```js
 import { expect } from 'chai';
-import { getComponentOutput } from 'astro-component-tester';
+import { getComponentOutput } from 'astro-component-check'
 
 describe('Component', async () => {
   let component;
@@ -44,7 +46,7 @@ const { mySuperProp } = Astro.props
 
 ```js
 import { expect } from 'chai';
-import { getComponentOutput } from 'astro-component-tester';
+import { getComponentOutput } from 'astro-component-check';
 
 describe('Component', async () => {
   let component;
@@ -63,7 +65,7 @@ Through a third parameter to `getComponentOutput`, it's possible to pass setting
 
 ```js
 import { expect } from 'chai';
-import { getComponentOutput } from 'astro-component-tester';
+import { getComponentOutput } from 'astro-component-check';
 
 describe('Component', async () => {
   let component;
@@ -82,6 +84,8 @@ describe('Component', async () => {
 
 ### Context-specific variables
 
-Since this work by building the component in an isolated environment, any variables depending on a specific context will be lost. For instance, `Astro.request` will always return the index page. Presumably, if you're building a component that should work in any instance, this wouldn't be an issue but it could become one for some components.
+Since this work by building the component in an isolated environment, any variables depending on a specific context will be lost.
+For instance, `Astro.request` will always return the index page.
+Presumably, if you're building a component that should work in any instance, this wouldn't be an issue but it could become one for some components.
 
-At the moment, `astro-component-tester` does not support any kind of mocking for supporting that use case
+At the moment, `astro-component-check` does not support any kind of mocking for supporting that use case

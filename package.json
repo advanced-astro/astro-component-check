@@ -1,48 +1,52 @@
 {
-  "name": "astro-component-tester",
+  "name": "astro-component-check",
+  "version": "1.0.0-beta",
   "description": "Utility to test Astro components",
-  "version": "0.6.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octocat/my-other-repo.git"
+  },
+  "license": "MIT",
+  "author": "Marc Redwerkz",
   "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.cts",
+      "require": "./dist/cjs/index.cjs",
+      "import": "./dist/index.js"
     }
   },
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "author": "Princesseuh",
-  "license": "MIT",
   "scripts": {
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs && npm run replace-cjs:dirname",
     "build": "npm run build:esm && npm run build:cjs",
-    "replace-cjs:dirname": "replace-in-file ./dist/cjs/**  --configFile=./scripts/replace-in-files-dirname.cjs",
+    "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs && npm run replace-cjs:dirname",
+    "build:esm": "tsc",
     "dev": "tsc --watch",
     "format": "prettier -w .",
     "lint": "eslint . --ext .ts,.js",
-    "prepublishOnly": "npm run build"
-  },
-  "peerDependencies": {
-    "astro": "^1.0.0-rc.1"
+    "prepublishOnly": "npm run build",
+    "replace-cjs:dirname": "replace-in-file ./dist/cjs/**  --configFile=./scripts/replace-in-files-dirname.cjs"
   },
   "devDependencies": {
-    "@types/eslint": "^8.4.5",
-    "@types/node": "^18.6.2",
-    "@types/prettier": "^2.6.4",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
-    "astro": ">=1.0.0-rc.3",
-    "eslint": "^8.20.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1",
-    "replace-in-file": "^6.3.5",
-    "typescript": "^4.7.4"
+    "@types/eslint": "^8.56.2",
+    "@types/node": "^20.11.7",
+    "@types/prettier": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "astro": ">=4.2.5",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.4",
+    "replace-in-file": "^7.1.0",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "astro": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0"
   }
 }
